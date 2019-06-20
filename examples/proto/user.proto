@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package proto;
+
+import "blueprint/db/entity.proto";
+
+message User {
+    option (db.entity) = {
+        enabled: true
+        name: "users"
+        description: "describes user account entity."
+    };
+
+    // User has an identifier
+    string id = 1 [
+        (db.attribute).primary = true
+    ];
+
+    string principal = 2;
+    string secret = 3;
+}
+
+message Profile {
+    option (db.entity) = {
+        enabled: true
+        name: "profiles"
+        description: "describes user preferences."
+    };
+
+    // User has an identifier
+    string id = 1 [
+        (db.attribute) = {
+            primary: true
+            description: "is an internal database identifier"
+        }
+    ];
+
+    string email = 2;
+    string first_name = 3;
+    string last_name = 4;
+}
+
+message Picture {
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package db;
+
+import "google/protobuf/descriptor.proto";
+
+
+
+extend google.protobuf.MessageOptions {
+    Entity entity = 98765400;
+}
+
+extend google.protobuf.FieldOptions {
+    Attribute attribute = 98765401;
+}
+
+// -----------------------------------------------------------------------------
+
+message Entity {
+    bool enabled = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message Attribute {
+    bool primary = 1;
+    string description = 2;
+}
